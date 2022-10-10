@@ -59,7 +59,8 @@ estimateDepthFactors <- function(obj, lib.factor=NULL, which.lib="both",
                                   annotations=obj@dnaAnnot, 
                                   lib.factor=lib.factor, 
                                   depth.estimator=depth.estimator)
-        if (any(dDepth == 0)) {
+        if (any(dDepth == 0, na.rm = T)) {
+            print(dDepth)
             warning("Some DNA library size factors are 0.")
         }
         obj@dnaDepth <- dDepth
@@ -69,7 +70,9 @@ estimateDepthFactors <- function(obj, lib.factor=NULL, which.lib="both",
                                   annotations=obj@rnaAnnot, 
                                   lib.factor=lib.factor, 
                                   depth.estimator=depth.estimator)
-        if (any(rDepth == 0)) {
+        print(rDepth)
+        if (any(rDepth == 0, na.rm = T)) {
+            print(rDepth)
             warning("Some RNA library size factors are 0.")
         }
         obj@rnaDepth <- rDepth
